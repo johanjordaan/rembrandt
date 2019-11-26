@@ -1,0 +1,11 @@
+node_modules
+build
+coverage
+.nyc_output
+dist
+
+lib/*.js
+lib/*.map
+
+yarn-error.log
+

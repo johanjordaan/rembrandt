@@ -1,0 +1,16 @@
+import {
+} from 'lodash'
+
+import { 
+  ColourModel,
+  VendorEnum,
+  TypeEnum
+} from '../model'
+
+
+export const Colours = {
+<%_ colours.forEach((c)=>{ -%>
+  '<%= c.name -%>':new ColourModel(VendorEnum['<%= c.vendor %>'],TypeEnum['<%= c.type %>'],'<%= c.name %>'),
+<%_ }) %>
+}
+

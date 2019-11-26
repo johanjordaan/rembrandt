@@ -1,0 +1,17 @@
+{
+  "include": [
+    "src",
+  ],
+  "exclude": [
+      "node_modules",
+      "test"
+  ],
+  "compilerOptions": {
+    "module": "commonjs",
+    "sourceMap": true,
+    "target": "es2015",
+    "outDir":"./build",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+  }
+}

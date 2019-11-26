@@ -1,0 +1,55 @@
+{
+  "name": "paint",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@types/chai": "^4.2.4",
+    "@types/lodash": "^4.14.145",
+    "@types/mocha": "^5.2.7",
+    "chai": "^4.2.0",
+    "cross-env": "^6.0.3",
+    "ejs": "^3.0.1",
+    "json-loader": "^0.5.7",
+    "lodash": "^4.17.15",
+    "mocha": "^6.2.2",
+    "npm-watch": "^0.6.0",
+    "nyc": "^14.1.1",
+    "pixi.js": "^5.1.5",
+    "reload": "^3.0.3",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.4",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  },
+  "watch": {
+    "build": {
+      "patterns": [
+        "src",
+        "data",
+        "scripts"
+      ],
+      "ignore" :[
+        "src/data"
+      ],
+      "extensions": [
+        "ts",
+        "js",
+        "csv",
+        "template"
+      ]
+    }
+  },
+  "scripts": {
+    "watch": "npm-watch",
+    "start": "yarn watch & reload index.html",
+    "test": "cross-env TS_NODE_FILES=true mocha --exit --require ts-node/register --colors test/**/*.ts",
+    "coverage": "nyc yarn test",
+    "tsc": "tsc --build tsconfig.json",
+    "webpack": "webpack --config webpack.config.js",
+    "build": "yarn codegen; yarn tsc; yarn webpack",
+    "genColours": "node ./scripts/genColours.js",
+    "codegen":"yarn genColours"
+  }
+}
