@@ -1,9 +1,9 @@
 import { BaseScene } from './BaseScene'
 import { IView } from './view'
 
-import * as x from './model/static/Colours'
+//import * as x from './model/static/Colours'
 
-console.log(x)
+//console.log(x)
 
 export class Scene extends BaseScene {
 
@@ -21,6 +21,6 @@ export class Scene extends BaseScene {
   }  
 }
 
-new Scene().init()
+new BaseScene().init()
 
 

@@ -3,27 +3,26 @@ import * as PIXI from 'pixi.js'
 import { each } from 'lodash'
 
 import { Observable } from './utils'
-import { IView, SplashView } from './view'
-import { SplashModel } from './model'
+import { IViewModel, SplashViewModel } from './viewmodel'
 
 export class BaseScene extends Observable {
   app:PIXI.Application   
-  views:IView[]
+  viewmodels:IViewModel[]
   
   // This should be overriden in your own scene
   // 
-  public build = ():IView[] => {
+  public build = ():IViewModel[] => {
     
-    const sm = new SplashModel("Welcome to the BaseScene")
-    const sv = new SplashView(this.app.screen.width,this.app.screen.height,sm)
+    const vm = new SplashViewModel(this.app.screen.width,this.app.screen.height)
+    vm.model.text = ["[Click here]","Welcome to the BaseScene"]
 
-    return [sv]
+    return [vm]
   }
   // This should be overwriten in your own scene
   // 
-  public gameLoop = (delta:number) => {
-    delta = 10
-  }
+  //public gameLoop = (delta:number) => {
+  //  delta = 10
+  //}
   
   public init = () => {
     if(!PIXI.utils.isWebGLSupported()){
@@ -31,23 +30,21 @@ export class BaseScene extends Observable {
     } else {
       PIXI.utils.sayHello("WebGL")
     }
-
     //Create a Pixi Application
     this.app = new PIXI.Application({width: window.innerWidth, height: window.innerWidth})
     this.app.renderer.view.style.position = "absolute"
     this.app.renderer.view.style.display = "block"
     this.app.renderer.autoDensity = true
     this.app.renderer.resize(window.innerWidth, window.innerHeight)
-    this.app.ticker.add(delta => this.gameLoop(delta))
+    //this.app.ticker.add(delta => this.gameLoop(delta))
 
     window.onresize = () => {
       this.app.renderer.resize(window.innerWidth, window.innerHeight)
-      each(this.views,(v)=>v.onResize(window.innerWidth, window.innerHeight))
+      each(this.viewmodels,(v)=>v.onResize(window.innerWidth, window.innerHeight))
     }
 
-    this.views = this.build()
-    
-    each(this.views,(v)=>this.app.stage.addChild(v.getGfx()))
+    this.viewmodels = this.build()
+    each(this.viewmodels,(v)=>this.app.stage.addChild(v.getGfx()))
   
     window.onload = () => {
       document.body.appendChild(this.app.view)

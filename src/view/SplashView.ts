@@ -25,17 +25,22 @@ export class SplashView implements ISubscriber, IView {
   private _splashText:PIXI.Text
   
   public getGfx() {
-
     this._splashContainer = new PIXI.Container()
-    this._splashText = new PIXI.Text(this.model.text, style)    
+    this._splashText = new PIXI.Text(this.model.currentText, style)    
     this._splashContainer.addChild(this._splashText)
+
+    const onUp = () => {
+      this._splashText.text = this.model.nextText()
+      this._resize()
+    }
+    
+    this._splashText.interactive = true
+    this._splashText.on('pointerup', onUp)
 
     this._resize()
 
     return this._splashContainer
   }
-
-
 
   private _resize() {
     this._splashContainer.removeChild(this._splashText)
