@@ -1,0 +1,91 @@
+{
+  "images": [
+    {
+      "ref":"main",
+      "url": "/data/images/main.jpg"
+    },
+    {
+      "ref":"bone_closeup",
+      "url": "/data/images/x.jpg"
+    }
+  ],
+  "recipes":[
+    {
+      "ref":"bone",
+      "recipeItems":[
+        {
+          "colour":"Wraith Bone",
+          "technique":"Base",
+          "notes":"Spray can"
+        },
+        {
+          "colour":"Seraphim Sepia",
+          "technique":"Shade",
+          "notes":""
+        },
+        {
+          "colour":"Zandri Dust",
+          "technique":"DryBrush",
+          "notes":"Heavy"
+        },
+        {
+          "colour":"Palid Wytch Flesh",
+          "technique":"DryBrush",
+          "notes":"Light, Down Strokes"
+        }
+      ]
+    }
+  ],
+  "links":[
+    {
+      "ref":"main_bone",
+      "imageRef":"main",
+      "recipeRef":"bone"
+    },
+    {
+      "ref":"bone_closeup_bone",
+      "imageRef":"bone_closeup",
+      "recipeRef":"bone"
+    }
+  ],
+  "layouts":[
+    {
+      "ref":"layout1",
+      "images":[{
+        "imageRef":"main",
+        "position":{
+          "x":100,
+          "y":40
+        }
+      },
+      {
+        "imageRef":"bone_closeup",
+        "position":{
+          "x":100,
+          "y":10
+        }
+      }],
+      "recipes":[{
+        "recipeRef":"bone",
+        "position":{
+          "x":160,
+          "y":10
+        }
+      }],
+      "links":[{
+        "linkRef":"main_bone",
+        "position":{
+          "x":20,
+          "y":40
+        }
+      },
+      {
+        "linkRef":"bone_closeup_bone",
+        "position":{
+          "x":10,
+          "y":100
+        }
+      }]
+    }  
+  ]
+}

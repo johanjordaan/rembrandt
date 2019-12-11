@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type":"object",
+  "additionalProperties": false,
+  "properties":{
+    "images": {
+      "type":"array",
+      "items":{
+        "type":"object",
+        "additionalProperties": false,
+        "properties":{
+          "ref":{"type":"string"},
+          "url":{
+            "type":"string",
+            "format":"uri-reference"
+          }
+        }
+      }
+    },
+    "recipes": {
+      "type":"array",
+      "items":{
+        "type":"object",
+        "additionalProperties": false,
+        "properties":{
+          "ref":{
+            "type":"string"
+          },
+          "recipeItems":{
+            "type":"array",
+            "items":{
+              "type":"object",
+              "additionalProperties": false,
+              "properties":{
+                "colour":{"type":"string"},
+                "technique":{"type":"string"},
+                "notes":{"type":"string"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "links": {
+      "type":"array",
+      "items":{
+        "type":"object",
+        "additionalProperties": false,
+        "properties":{
+          "ref":{
+            "type":"string"
+          },
+          "imageRef":{
+            "type":"string"
+          },
+          "recipeRef":{
+            "type":"string"
+          }
+        }
+      }
+    },
+    "layouts":{
+      "type":"array",
+      "items":{
+        "type":"object",
+        "additionalProperties": false,
+        "properties":{
+          "ref":{"type":"string"},
+          "images":{
+            "type":"array",
+            "items":{
+              "type":"object",
+              "additionalProperties": false,
+              "properties":{
+                "imageRef":{"type":"string"},
+                "position":{
+                  "type":"object",
+                  "properties":{
+                    "x":{"type":"number"},
+                    "y":{"type":"number"}
+                  }
+                }
+              }
+            }
+          },
+          "recipes":{
+            "type":"array",
+            "items":{
+              "type":"object",
+              "additionalProperties": false,
+              "properties":{
+                "recipeRef":{"type":"string"},
+                "position":{
+                  "type":"object",
+                  "properties":{
+                    "x":{"type":"number"},
+                    "y":{"type":"number"}
+                  }
+                }
+              }
+            }
+          },
+          "links":{
+            "type":"array",
+            "items":{
+              "type":"object",  
+              "additionalProperties": false,
+              "properties":{
+                "linkRef":{"type":"string"},
+                "position":{
+                  "type":"object",
+                  "additionalProperties": false,
+                  "properties":{
+                    "x":{"type":"number"},
+                    "y":{"type":"number"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }    
+}
